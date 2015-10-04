@@ -20,9 +20,39 @@ api = InstagramAPI(access_token=access_token, client_secret=client_secret)
 # 	print media.get_standard_resolution_url()
 	# photos.append('<img src="%s"/>' % media.get_standard_resolution_url())
 
+
+def get_instagram():
+	media_feed, next = api.user_media_feed(count=10)
+	data = {}
+	usernames = []
+	dates = []
+	descriptions = []
+	prof_photos = []
+	photos = []
+	num_likes = []
+	indexer = []
+	for media in media_feed:
+		descriptions.append(media.caption.text)
+		photos.append(media.get_standard_resolution_url())
+		usernames.append(media.user.username)
+		num_likes.append(media.likes.count)
+		prof_photos.append(media.user.profile_picture)
+	data['photos'] = photos
+	data['descriptions'] = descriptions
+	data['num_likes'] = num_likes
+	data['usernames'] = usernames
+	data['prof_photos'] = prof_photos
+	for x in xrange(0,10):
+		print x
+		indexer.append(x)
+	data['indexer'] = indexer
+	return data
+
 @app.route('/')
 def index():
-  return render_template('index.html')
+	print "hi"
+	data = get_instagram()
+	return render_template('index.html', **data)
 
 @app.route('/test')
 def test():
@@ -37,7 +67,10 @@ def pageNotFound(e):
   """ Handle 404 errors """
   return render_template('404.html'), 404
 
-
+@app.errorhandler(405)
+def serverNotFound(e):
+  """ Handle 404 errors """
+  return render_template('404.html'), 405
 
 
 if __name__ == '__main__':
