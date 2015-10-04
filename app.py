@@ -45,7 +45,6 @@ def get_instagram():
 	data['usernames'] = usernames
 	data['prof_photos'] = prof_photos
 	for x in xrange(0,10):
-		print x
 		indexer.append(x)
 	data['indexer'] = indexer
 	return data
@@ -53,7 +52,6 @@ def get_instagram():
 
 @app.route('/')
 def index():
-	print "hi"
 	data = get_instagram()
 	return render_template('index.html', **data)
 
