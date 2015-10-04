@@ -24,16 +24,6 @@ api = InstagramAPI(access_token=access_token, client_secret=client_secret)
 def index():
   return render_template('index.html')
 
-<<<<<<< HEAD
-@app.route('/test')
-def test():
-	return render_template('test.html')
-
-@app.route('/test2')
-def test2():
-	return render_template('test2.html')
-=======
-
 @app.route('/test')
 def test():
 	return render_template('test.html')
@@ -41,9 +31,6 @@ def test():
 @app.route('/get_test', methods=['GET'])
 def get_test():
     print request.get_json(force=True)
-
-
->>>>>>> 6451625e33de5f2fbee1ceff6365cf6d525ac48d
 
 
 
