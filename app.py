@@ -32,6 +32,10 @@ def test():
 def get_test():
     print request.get_json(force=True)
 
+@app.errorhandler(404)
+def pageNotFound(e):
+  """ Handle 404 errors """
+  return render_template('404.html'), 404
 
 
 
