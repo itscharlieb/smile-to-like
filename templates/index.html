@@ -16,6 +16,17 @@
 
 	<!-- JQUERY / Fullpage -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../static/js/jquery.fullPage.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				sectionsColor: ['#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff'],
+				anchors: ['5thfloor', '4thfloor', '3rdfloor', '2ndfloor', '1stfloor'],
+				menu: '#nav',
+				scrollingSpeed: 1000
+			});
+		});
+	</script>
 </head>
 <body>
 	<header>
@@ -37,7 +48,7 @@
 						<p class="date"></p>
 						<a class="user-name"></a>
 						<p class="description"></p>
-						<p class="see-more"></p>
+						<div class="comment"></div>
 					</div>
 				</div>
            	</div>
@@ -46,11 +57,11 @@
 
 	<script type="text/javascript" src="../static/js/main.js"></script>
 	<script type="text/javascript">
-	$(document).ready(function(){
-		$( window ).scroll(function() {
-  			$( "img" ).toggleClass( "slideup" );
-		});
-	});
+	// $(document).ready(function(){
+	// 	$( window ).scroll(function() {
+ //  			$( "img" ).addClass( "slideup" );
+	// 	});
+	// });
 	</script>
 </body>
 </html>

@@ -33,9 +33,13 @@ $c-blue: #3b5998;
 
 @mixin font-size($size, $weight){
 	font-weight:$weight;
-	font-size: ($size / 16) * 1em;
+	font-size: ($size / 16) * .9em;
 	letter-spacing: default;
 	-webkit-font-smoothing:antialiased;
+
+	@media screen and (min-width: 1280px){
+	font-size: ($size / 16) * 1em;
+	}
 }
 @mixin font-lnum{
    -moz-font-feature-settings: "lnum";
@@ -126,6 +130,7 @@ a{
 	outline: none;
 }
 body{
+	// height: 2000px;
 }
 
 a:hover,
@@ -160,13 +165,17 @@ header{
 				min-height: 100%;
 				position: relative;
 				@include debug;
+				@media screen and (max-width: 800px){
+					// width: 90%;
+				}
 
 				.photo{
-					position: relative;
-					width: 60%;
+					position: fixed;
+					top: 50%;
+					transform: translateY(-50%);
+					width: 40%;
+					min-width: 480px;
 					margin-right: 5%;
-					margin-top: 10%;
-					float: left;
 
 					@include debug;
 					height: 100%;
@@ -179,12 +188,20 @@ header{
 					@include flexbox-align(center);
 						width: 100%;
 					}
+
 				}
 				.content{
-					width: 35%;
-					float: left;
+					float: right;
+					width: 25%;
+					min-width: 280px;
 					display: inline-block;
 					@include debug;
+					@media screen and (max-width:800px){
+						// position: relative;
+						// width: 100%;
+						// margin-top: 15px;
+						// @include transition(.5s);
+					}
 
 					#like_wrapper{
 						margin-bottom: 70px;
@@ -221,32 +238,14 @@ header{
 					}
 					.description{
 						overflow: auto;
-
+						margin-bottom: 25px;
 					}
-					.see-more{
-						float:right;
-						color:$c-blue;
-						text-transform: capitalize;
-						@include transition(.5s);
-						&:hover,
-						&:active{
-							@include underline;
-						}
-					}
-					form input{
+					.comment{
+						background-color: gray;
+						opacity: .1;
+						// max-height:400px;
+						height: 280px;
 						width: 100%;
-						height:auto;
-						overflow: auto;
-						color:black;
-						font-family: $font-reg;
-					}
-					.comment_wrapper{
-						background-color: $c-grey;
-						width: 30%;
-						float: left;
-						position: fixed;
-						bottom: 0;
-						height: 30px;
 					}
 				}
 			}
@@ -260,15 +259,6 @@ header{
 // Jquery & Animation
 
 .slideup{
-	-webkit-animation-name: upup 1s;
+	opacity: 0;
+	@include transition(1s);
 }
-
-@-webkit-keyframes upup{
-	0% {
-		opacity: 1;
-	}
-	100%{
-		opacity: 0;
-	}
-}
-

@@ -1,9 +1,12 @@
 h1 {
   font-family: "soleil", sans-serif;
   font-weight: normal;
-  font-size: 4.5em;
+  font-size: 4.05em;
   letter-spacing: default;
   -webkit-font-smoothing: antialiased; }
+  @media screen and (min-width: 1280px) {
+    h1 {
+      font-size: 4.5em; } }
 
 p,
 a {
@@ -13,18 +16,27 @@ a {
   a.user-name {
     font-family: "soleil", sans-serif;
     font-weight: bold;
-    font-size: 1.3875em;
+    font-size: 1.24875em;
     letter-spacing: default;
     -webkit-font-smoothing: antialiased;
     color: #3b5998; }
+    @media screen and (min-width: 1280px) {
+      p.user-name,
+      a.user-name {
+        font-size: 1.3875em; } }
 
 .date,
 .description,
 .see-more {
   font-weight: normal;
-  font-size: 0.825em;
+  font-size: 0.7425em;
   letter-spacing: default;
   -webkit-font-smoothing: antialiased; }
+  @media screen and (min-width: 1280px) {
+    .date,
+    .description,
+    .see-more {
+      font-size: 0.825em; } }
 
 * {
   margin: 0;
@@ -57,11 +69,12 @@ header {
   min-height: 100%;
   position: relative; }
   #fullpage .section .slide .main_wrapper .photo {
-    position: relative;
-    width: 60%;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40%;
+    min-width: 480px;
     margin-right: 5%;
-    margin-top: 10%;
-    float: left;
     height: 100%;
     display: flex;
     display: -webkit-flex;
@@ -76,8 +89,9 @@ header {
       align-content: center;
       width: 100%; }
   #fullpage .section .slide .main_wrapper .content {
-    width: 35%;
-    float: left;
+    float: right;
+    width: 25%;
+    min-width: 280px;
     display: inline-block; }
     #fullpage .section .slide .main_wrapper .content #like_wrapper {
       margin-bottom: 70px; }
@@ -88,9 +102,12 @@ header {
         margin-bottom: 8px; }
       #fullpage .section .slide .main_wrapper .content #like_wrapper p {
         font-weight: normal;
-        font-size: 0.825em;
+        font-size: 0.7425em;
         letter-spacing: default;
         -webkit-font-smoothing: antialiased; }
+        @media screen and (min-width: 1280px) {
+          #fullpage .section .slide .main_wrapper .content #like_wrapper p {
+            font-size: 0.825em; } }
     #fullpage .section .slide .main_wrapper .content .user-photo {
       width: 70px;
       height: 70px;
@@ -106,37 +123,17 @@ header {
       color: #999999;
       margin-bottom: 14px; }
     #fullpage .section .slide .main_wrapper .content .description {
-      overflow: auto; }
-    #fullpage .section .slide .main_wrapper .content .see-more {
-      float: right;
-      color: #3b5998;
-      text-transform: capitalize;
-      -webkit-transition: 0.5s;
-      -moz-transition: 0.5s;
-      -ms-transition: 0.5s;
-      transition: 0.5s; }
-      #fullpage .section .slide .main_wrapper .content .see-more:hover, #fullpage .section .slide .main_wrapper .content .see-more:active {
-        text-decoration: underline;
-        cursor: pointer; }
-    #fullpage .section .slide .main_wrapper .content form input {
-      width: 100%;
-      height: auto;
       overflow: auto;
-      color: black;
-      font-family: "soleil", sans-serif; }
-    #fullpage .section .slide .main_wrapper .content .comment_wrapper {
-      background-color: #e9eaed;
-      width: 30%;
-      float: left;
-      position: fixed;
-      bottom: 0;
-      height: 30px; }
+      margin-bottom: 25px; }
+    #fullpage .section .slide .main_wrapper .content .comment {
+      background-color: gray;
+      opacity: .1;
+      height: 280px;
+      width: 100%; }
 
 .slideup {
-  -webkit-animation-name: upup 1s; }
-
-@-webkit-keyframes upup {
-  0% {
-    opacity: 1; }
-  100% {
-    opacity: 0; } }
+  opacity: 0;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  transition: 1s; }
