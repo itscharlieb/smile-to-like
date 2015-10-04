@@ -15,11 +15,18 @@ def index():
 
 @app.route('/test')
 def test():
+
 	return render_template('test.html')
 
 @app.route('/test2')
 def test2():
 	return render_template('test2.html')
+
+@app.route('/get_test', methods=['GET'])
+def get_test():
+    print request.get_json(force=True)
+
+
 
 
 
