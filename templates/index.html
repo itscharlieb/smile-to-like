@@ -4,10 +4,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Smile to Like</title>
 	<meta name="viewport" content="width=device-width">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 
- 	<!-- Font Import-->
-    <script src="https://use.typekit.net/tyt7upf.js"></script>
+	<!-- Font Import-->
+	<script src="https://use.typekit.net/tyt7upf.js"></script>
 	<script>try{Typekit.load({ async: true });}catch(e){}</script>
 
 	<!-- CSS-->
@@ -21,19 +21,23 @@
 	<header>
 		<img src="../static/img/logo.svg"/>
 	</header>
-		    	<div class="main_wrapper">
-					<img src="../static/img/sample2.png"/>
-					<div class="content">
-						<a class="user-photo" href=""></a>
-						<p class="date"></p>
-						<a class="user-name"></a>
-						<p class="description"></p>
-						<div id="like_wrapper">
-							<div></div>
-							<p class="like-description"></p>
-						</div>
-					</div>
-				</div>
+	<div class="main_wrapper">
+
+		<!-- <img src="../static/img/sample2.png"/> -->
+		{% for i in indexer %}
+			<img src="{{ photos[i] }}"/>
+		<div class="content">
+			<a class="user-photo" href="{{ prof_photos[i] }}"></a>
+			<p class="date"></p>
+			<a class="user-name">{{ usernames[i] }}</a>
+			<p class="description">{{ descriptions[i] }}</p>
+			<div id="like_wrapper">
+				<div></div>
+				<p class="like-description">{{ num_likes[i] }}</p>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
 
 	<script type="text/javascript" src="../static/js/main.js"></script>
 	<script type="text/javascript">
@@ -42,6 +46,6 @@
  //  			$( "img" ).addClass( "slideup" );
 	// 	});
 	// });
-	</script>
+</script>
 </body>
 </html>
