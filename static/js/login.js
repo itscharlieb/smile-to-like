@@ -1,5 +1,5 @@
-  // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
+ // This is called with the results from from FB.getLoginStatus().
+function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
     // The response object is returned with a status field that lets the
@@ -9,15 +9,22 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
+      
+      FB.api(
+      "/me/feed", function (response) {
+        if (response && !response.error) {
+          $('#status1').hide();
+        } 
+      });
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
+      'into this app.';
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
       document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
+      'into Facebook.';
     }
   }
 
@@ -31,8 +38,8 @@
   }
 
   window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '522262104617161',
+    FB.init({
+      appId      : '522262104617161',
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page
@@ -55,7 +62,7 @@
     statusChangeCallback(response);
   });
 
-  };
+};
 
   // Load the SDK asynchronously
   (function(d, s, id) {
@@ -70,9 +77,24 @@
   // successful.  See statusChangeCallback() for when this call is made.
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
+    var feedPromise = new Promise(function(resolve, reject) {
+      FB.api('/me/?fields=name,feed&filter= app_2305272732', resolve);
+    });
+    feedPromise.then(function(response) {
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+      'Thanks for logging in, ' + response.name + '!';
+      console.log(response);
+      return Promise.all(response.feed.data.map(function(feedItem) {
+        return new Promise(function(resolve, reject) {
+          FB.api('/' + feedItem.id + '?fields=attachments{media}', resolve);
+        })
+      }));
+    }).then(function(stories) {
+      stories.forEach(function(story) {
+        story.attachments && story.attachments.data.forEach(function(attachment) {
+          $("#pictures").append("<img src='" + attachment.media.image.src + "' />");
+        });
+      });
     });
   }
