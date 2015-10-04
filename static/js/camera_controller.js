@@ -9,18 +9,24 @@ function take_snapshot() {
     // take snapshot and get image data
     Webcam.snap( function(data_uri) {
         // display results in page
-        document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
+        // document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
+        console.log("here");
         process_photo(data_uri);
     });
 }
 
 function process_photo(data_uri){
 	$.ajax({
-		url: "{{ url_for('get_test') }}",
+		// url: "{{ url_for('get_test') }}",
+		url: "http://localhost:5000/get_test",
+		type: 'POST',
+		data: JSON.stringify({
+			'uri': "" + data_uri
+		}),
 		contentType: 'application/json',
-		data: data_uri,
-		success: function (){
-			on_processed();
+		success: function(data) {
+			console.log(JSON.stringify(data));
+			// document.getElementById('my_test').innerHTML = JSON.stringify(data)
 		}
 	});
 }

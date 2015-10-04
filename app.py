@@ -2,6 +2,7 @@
 from flask import Flask, render_template, request, url_for, redirect, make_response, jsonify
 from instagram.client import InstagramAPI
 import indicoio
+from sentiment import evaluate_emotions
 
 app = Flask(__name__)
 
@@ -64,8 +65,10 @@ def test():
 def get_test():
     data = request.get_json(force=True)
     sentiment = indicoio.fer(data['uri'])
-    human_response = evaluate_sentiment(sentiment)
-    return jsonify(sentiment)
+    human_response = evaluate_emotions(sentiment)
+    # print jsonify(human_response)
+    return jsonify({
+    	'action': human_response })
 
 def pageNotFound(e):
   """ Handle 404 errors """
@@ -73,7 +76,7 @@ def pageNotFound(e):
 
 @app.errorhandler(405)
 def serverNotFound(e):
-  """ Handle 404 errors """
+  """ Handle 405 errors """
   return render_template('404.html'), 405
 
 
