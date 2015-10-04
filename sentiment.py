@@ -25,14 +25,12 @@ def evaluate_emotions(emotions):
 
     :return: one of 'LIKE', 'NORESPONSE', 'DISLIKE'
     """
-    epsilon = .1
     negativity = sum(map(lambda emotion: emotions[emotion], negative_emotions))
     positivity = sum(map(lambda emotion: emotions[emotion], positive_emotions))
-    # if positivity - negativity > 0:
-    #     return 'LIKE'
-    # else:
-    #     return 'DISLIKE'
-    return 'LIKE'
+    if positivity - negativity > -.1:
+        return 'LIKE'
+    else:
+        return 'DISLIKE'
 
 
 emos = {
