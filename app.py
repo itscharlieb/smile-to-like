@@ -1,7 +1,6 @@
 #!/usr/bin/env python 
 from flask import Flask, render_template, request, url_for, redirect, make_response, jsonify
 from instagram.client import InstagramAPI
-import requests
 import indicoio
 
 app = Flask(__name__)
@@ -31,10 +30,12 @@ def index():
 def test():
 	return render_template('test.html')
 
+
 @app.route('/get_test', methods=['POST'])
 def get_test():
     data = request.get_json(force=True)
     sentiment = indicoio.fer(data['uri'])
+    human_response = evaluate_sentiment(sentiment)
     return jsonify(sentiment)
 
 def pageNotFound(e):
