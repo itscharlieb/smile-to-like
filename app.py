@@ -13,6 +13,14 @@ redirect_uri = 'http://localhost:5000/oauth_callback'
 def index():
   return render_template('index.html')
 
+@app.route('/test')
+def test():
+	return render_template('test.html')
+
+@app.route('/test2')
+def test2():
+	return render_template('test2.html')
+
 
 
 
