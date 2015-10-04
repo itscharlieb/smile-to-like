@@ -1,9 +1,12 @@
 h1 {
   font-family: "soleil", sans-serif;
   font-weight: normal;
-  font-size: 4.5em;
+  font-size: 4.05em;
   letter-spacing: default;
   -webkit-font-smoothing: antialiased; }
+  @media screen and (min-width: 1280px) {
+    h1 {
+      font-size: 4.5em; } }
 
 p,
 a {
@@ -13,18 +16,27 @@ a {
   a.user-name {
     font-family: "soleil", sans-serif;
     font-weight: bold;
-    font-size: 1.3875em;
+    font-size: 1.24875em;
     letter-spacing: default;
     -webkit-font-smoothing: antialiased;
     color: #3b5998; }
+    @media screen and (min-width: 1280px) {
+      p.user-name,
+      a.user-name {
+        font-size: 1.3875em; } }
 
 .date,
 .description,
 .see-more {
   font-weight: normal;
-  font-size: 0.825em;
+  font-size: 0.7425em;
   letter-spacing: default;
   -webkit-font-smoothing: antialiased; }
+  @media screen and (min-width: 1280px) {
+    .date,
+    .description,
+    .see-more {
+      font-size: 0.825em; } }
 
 * {
   margin: 0;
@@ -46,97 +58,110 @@ header {
   left: 0;
   z-index: 100; }
   header img {
-    margin: 10px 0 0 10px;
-    width: 130px;
+    margin: 14px 0 0 10px;
+    width: 140px;
     height: auto; }
 
-#fullpage .section .slide .main_wrapper {
+.main_wrapper {
   width: 70%;
   margin: auto;
   height: 100%;
   min-height: 100%;
   position: relative; }
-  #fullpage .section .slide .main_wrapper .photo {
-    position: relative;
-    width: 60%;
-    margin-right: 5%;
-    margin-top: 10%;
-    float: left;
-    height: 100%;
-    display: flex;
-    display: -webkit-flex;
-    -webkit-flex-direction: column;
-    flex-direction: column;
-    -webkit-justify-content: center;
-    justify-content: center;
-    align-content: center; }
-    #fullpage .section .slide .main_wrapper .photo img {
-      -webkit-justify-content: center;
-      justify-content: center;
-      align-content: center;
-      width: 100%; }
-  #fullpage .section .slide .main_wrapper .content {
-    width: 35%;
-    float: left;
-    display: inline-block; }
-    #fullpage .section .slide .main_wrapper .content #like_wrapper {
+  @media screen and (min-width: 1280px) {
+    .main_wrapper {
+      width: 65%; } }
+  .main_wrapper img {
+    position: fixed;
+    top: 50%;
+    width: 40%;
+    transform: translateY(-50%);
+    min-width: 400px;
+    margin-right: 5%; }
+    @media screen and (min-width: 1280px) {
+      .main_wrapper img {
+        width: 40%; } }
+  .main_wrapper .content {
+    float: right;
+    width: 25%;
+    min-width: 280px;
+    display: inline-block;
+    margin-top: 18%; }
+    .main_wrapper .content #like_wrapper {
       margin-bottom: 70px; }
-      #fullpage .section .slide .main_wrapper .content #like_wrapper div {
+      .main_wrapper .content #like_wrapper div {
         background-color: #ffce14;
         width: 100%;
         height: 15px;
-        margin-bottom: 8px; }
-      #fullpage .section .slide .main_wrapper .content #like_wrapper p {
+        margin-bottom: 8px;
+        min-width: 300px; }
+      .main_wrapper .content #like_wrapper p {
         font-weight: normal;
-        font-size: 0.825em;
+        font-size: 0.7425em;
         letter-spacing: default;
         -webkit-font-smoothing: antialiased; }
-    #fullpage .section .slide .main_wrapper .content .user-photo {
+        @media screen and (min-width: 1280px) {
+          .main_wrapper .content #like_wrapper p {
+            font-size: 0.825em; } }
+    .main_wrapper .content .user-photo {
       width: 70px;
       height: 70px;
       background-image: url(../img/sample2.png);
       background-size: cover;
       margin-right: 10px; }
-    #fullpage .section .slide .main_wrapper .content .user-photo {
+    .main_wrapper .content .user-photo {
+      display: inline-block;
       border-radius: 50%; }
-    #fullpage .section .slide .main_wrapper .content .user-photo,
-    #fullpage .section .slide .main_wrapper .content .date {
-      display: inline-block; }
-    #fullpage .section .slide .main_wrapper .content .date {
+    .main_wrapper .content .date {
+      display: inline-block;
       color: #999999;
       margin-bottom: 14px; }
-    #fullpage .section .slide .main_wrapper .content .description {
-      overflow: auto; }
-    #fullpage .section .slide .main_wrapper .content .see-more {
-      float: right;
-      color: #3b5998;
-      text-transform: capitalize;
-      -webkit-transition: 0.5s;
-      -moz-transition: 0.5s;
-      -ms-transition: 0.5s;
-      transition: 0.5s; }
-      #fullpage .section .slide .main_wrapper .content .see-more:hover, #fullpage .section .slide .main_wrapper .content .see-more:active {
-        text-decoration: underline;
-        cursor: pointer; }
-    #fullpage .section .slide .main_wrapper .content form input {
-      width: 100%;
-      height: auto;
+    .main_wrapper .content .description {
       overflow: auto;
-      color: black;
-      font-family: "soleil", sans-serif; }
-    #fullpage .section .slide .main_wrapper .content .comment_wrapper {
-      background-color: #e9eaed;
-      width: 30%;
-      float: left;
-      position: fixed;
-      bottom: 0;
-      height: 30px; }
+      margin-bottom: 25px; }
+    .main_wrapper .content .comment {
+      background-color: gray;
+      opacity: .1;
+      height: 280px;
+      width: 100%; }
 
 .slideup {
-  -webkit-animation-name: upup 1s; }
+  opacity: 0;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  transition: 1s; }
 
-@-webkit-keyframes upup {
-  0% {
-    opacity: 1; }
-  100% {
-    opacity: 0; } }
+.errorpage {
+  text-align: center; }
+  .errorpage h1 {
+    font-family: "soleil", sans-serif;
+    font-weight: normal;
+    font-size: 12.4875em;
+    letter-spacing: default;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 5px;
+    border-bottom: 4px solid #ffce14; }
+    @media screen and (min-width: 1280px) {
+      .errorpage h1 {
+        font-size: 13.875em; } }
+  .errorpage h3 {
+    font-family: "soleil", sans-serif;
+    font-weight: normal;
+    font-size: 3.15em;
+    letter-spacing: default;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 2px;
+    margin-bottom: 10px; }
+    @media screen and (min-width: 1280px) {
+      .errorpage h3 {
+        font-size: 3.5em; } }
+  .errorpage p {
+    font-family: "soleil", sans-serif;
+    font-weight: normal;
+    font-size: 1.2375em;
+    letter-spacing: default;
+    -webkit-font-smoothing: antialiased; }
+    @media screen and (min-width: 1280px) {
+      .errorpage p {
+        font-size: 1.375em; } }

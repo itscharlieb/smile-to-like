@@ -33,15 +33,13 @@ def test():
 
 @app.route('/get_test', methods=['POST'])
 def get_test():
-    # # # print request.get_json(force=True)
-    # data = request.get_json(force=True)
-    # print data
-    # return jsonify(data)
     data = request.get_json(force=True)
-    # print data['format']
     print indicoio.fer(data['uri'])
-    # print data['format']
     return jsonify({'key': 'val'})
+
+def pageNotFound(e):
+  """ Handle 404 errors """
+  return render_template('404.html'), 404
 
 
 if __name__ == '__main__':
