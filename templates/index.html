@@ -1,11 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Smile to Like</title>
+	<meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+
+ 	<!-- Font Import-->
+    <script src="https://use.typekit.net/tyt7upf.js"></script>
+	<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+	<!-- CSS-->
+	<link rel="stylesheet" type="text/css" href="../static/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="../static/css/main.css" />
+
+	<!-- JQUERY / Fullpage -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<title>Smile</title>
 </head>
 <body>
-	<p>Hello World!</p>
-</body>
+	<header>
+		<img src="../static/img/logo.svg"/>
+	</header>
+	<main id="fullpage">
+		<section class="section" id="section1">	
+		    <div class="slide">
+		    	<div class="main_wrapper">
+					<div class="photo">
+						<img src="../static/img/sample2.png"/>
+					</div>
+					<div class="content">
+						<div id="like_wrapper">
+							<div></div>
+							<p class="like-description"></p>
+						</div>
+						<a class="user-photo" href=""></a>
+						<p class="date"></p>
+						<a class="user-name"></a>
+						<p class="description"></p>
+						<p class="see-more"></p>
+					</div>
+				</div>
+           	</div>
+		</section>
+	</main>
 
+	<script type="text/javascript" src="../static/js/main.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$( window ).scroll(function() {
+  			$( "img" ).toggleClass( "slideup" );
+		});
+	});
+	</script>
+</body>
 </html>

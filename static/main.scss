@@ -1,0 +1,274 @@
+@import "susy";
+
+// Grid
+$susy: (
+	columns: 12,
+	container:100%,
+	gutters: 1/4,
+	global-box-sizing:border-box,
+	debug: (
+	    image: show,
+	    output: overlay,
+	    color: rgba(2,86,156,0.2),
+	    toggle: top right,
+	)
+);
+
+
+
+// Variables (Font)
+
+$font-reg: "soleil", sans-serif;
+$font-bold: "soleil", sans-serif;
+
+
+// Variables (Color)
+$c-yellow: #ffce14;
+$c-grey: #e9eaed;
+$c-dgrey:#999999;
+$c-blue: #3b5998;
+
+
+// Font   (px to em)
+
+@mixin font-size($size, $weight){
+	font-weight:$weight;
+	font-size: ($size / 16) * 1em;
+	letter-spacing: default;
+	-webkit-font-smoothing:antialiased;
+}
+@mixin font-lnum{
+   -moz-font-feature-settings: "lnum";
+   -webkit-font-feature-settings: "lnum";
+   font-feature-settings: "lnum";
+}
+
+h1{
+	font-family: $font-reg;
+	@include font-size(72, normal);
+}
+h2{
+
+}
+h3{
+
+}
+h4{
+}
+h5{
+}
+h3{
+}
+p,
+a{
+	font-family:$font-reg;
+	line-height: 1.7em;
+
+	&.user-name{
+	font-family: $font-bold;
+	@include font-size(22.2, bold);
+	color: $c-blue;
+	}
+}
+
+
+.date,
+.description,
+.see-more{
+	@include font-size(13.2, normal);
+}
+
+
+
+// Mixin
+@mixin transition($duration) {
+  -webkit-transition: $duration;
+ 	 -moz-transition: $duration;
+	  -ms-transition: $duration;
+ 		  transition: $duration;
+}
+
+@mixin flexbox($direction){
+	display: flex;
+	display: -webkit-flex;
+	-webkit-flex-direction:$direction;
+			flex-direction:$direction;
+}
+@mixin flexbox-justify($direction){
+	-webkit-justify-content:$direction;
+			justify-content:$direction;
+}
+@mixin flexbox-align($direction){
+	    align-content:$direction;
+}
+// Mixin (Effects)
+@mixin underline{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+// debug
+@mixin debug{
+	// background-color: rgba(2,86,156,0.1);	
+	// @include susy-grid-background;
+}
+@mixin debug2{
+	border: 1px solid black;
+}
+
+
+// Main
+
+*{
+	margin: 0;
+	padding: 0;
+	border:none;
+	outline: none;
+}
+body{
+}
+
+a:hover,
+a:active,
+a:visited{
+	cursor: pointer;
+	text-decoration: none;
+}
+header{
+	@include debug;
+	position: fixed;
+	width: 100%;
+	height:100px;
+	top: 0;
+	left: 0;
+	z-index: 100;
+
+		img{
+			margin:10px 0 0 10px;
+			width: 130px;
+			height: auto;
+		}
+}
+
+#fullpage{
+	.section{
+		.slide{
+			.main_wrapper{
+				width: 70%;
+				margin: auto;
+				height: 100%;
+				min-height: 100%;
+				position: relative;
+				@include debug;
+
+				.photo{
+					position: relative;
+					width: 60%;
+					margin-right: 5%;
+					margin-top: 10%;
+					float: left;
+
+					@include debug;
+					height: 100%;
+					@include flexbox(column);
+					@include flexbox-justify(center);
+					@include flexbox-align(center);
+
+					img{
+					@include flexbox-justify(center);
+					@include flexbox-align(center);
+						width: 100%;
+					}
+				}
+				.content{
+					width: 35%;
+					float: left;
+					display: inline-block;
+					@include debug;
+
+					#like_wrapper{
+						margin-bottom: 70px;
+						div{
+						background-color: $c-yellow;
+						width: 100%;
+						height: 15px;
+						margin-bottom: 8px;
+						}
+						p{
+							@include font-size(13.2, normal);
+						}
+					}
+					.user-photo{
+						width: 70px;
+						height:70px;
+						background-image:url(../img/sample2.png);
+						background-size: cover;
+						margin-right: 10px;
+					}
+					.user-photo{
+						border-radius: 50%;
+					}
+					.user-photo,
+					.date{
+						display: inline-block;
+					}
+					.date{
+						color:$c-dgrey;
+						margin-bottom: 14px;
+					}
+					.user-name{
+						
+					}
+					.description{
+						overflow: auto;
+
+					}
+					.see-more{
+						float:right;
+						color:$c-blue;
+						text-transform: capitalize;
+						@include transition(.5s);
+						&:hover,
+						&:active{
+							@include underline;
+						}
+					}
+					form input{
+						width: 100%;
+						height:auto;
+						overflow: auto;
+						color:black;
+						font-family: $font-reg;
+					}
+					.comment_wrapper{
+						background-color: $c-grey;
+						width: 30%;
+						float: left;
+						position: fixed;
+						bottom: 0;
+						height: 30px;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+// Jquery & Animation
+
+.slideup{
+	-webkit-animation-name: upup 1s;
+}
+
+@-webkit-keyframes upup{
+	0% {
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+
