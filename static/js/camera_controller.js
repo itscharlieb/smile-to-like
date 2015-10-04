@@ -5,23 +5,24 @@ Webcam.set({
 	jpeg_quality: 90
 });
 Webcam.attach( '#my_camera' );
-function take_snapshot() {
+function take_snapshot(media_id) {
     // take snapshot and get image data
     Webcam.snap( function(data_uri) {
         // display results in page
         // document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
         console.log("here");
-        process_photo(data_uri);
+        process_photo(data_uri, media_id);
     });
 }
 
-function process_photo(data_uri){
+function process_photo(data_uri, media_id){
 	$.ajax({
 		// url: "{{ url_for('get_test') }}",
 		url: "http://localhost:5000/get_test",
 		type: 'POST',
 		data: JSON.stringify({
-			'uri': "" + data_uri
+			'uri': "" + data_uri,
+			'mediaId': media_id
 		}),
 		contentType: 'application/json',
 		success: function(data) {

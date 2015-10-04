@@ -41,7 +41,8 @@
 			(function call_post () {
 				setTimeout(function () {
 					setTimeout(function () {
-						take_snapshot();
+						var id = ({{ mediaIds[0] }}).toString();
+						take_snapshot(id);
 					}, 3000);
 					// $.ajax({
 					// 	url: "{{ url_for('get_test') }}",
