@@ -66,7 +66,6 @@ def get_test():
     data = request.get_json(force=True)
     sentiment = indicoio.fer(data['uri'])
     human_response = evaluate_emotions(sentiment)
-    # print jsonify(human_response)
     return jsonify({
     	'action': human_response })
 
