@@ -23,6 +23,7 @@
 	</header>
 	<div class="main_wrapper">
 
+		    <div id="like-animation">&#128526</div>
 		<!-- <img src="../static/img/sample2.png"/> -->
 		{% for i in indexer %}
 			<img src="{{ photos[i] }}"/>
@@ -41,11 +42,18 @@
 
 	<script type="text/javascript" src="../static/js/main.js"></script>
 	<script type="text/javascript">
-	// $(document).ready(function(){
-	// 	$( window ).scroll(function() {
- //  			$( "img" ).addClass( "slideup" );
-	// 	});
-	// });
+	$(document).ready(function(){
+		$( window ).scroll(function() {
+  			$( "img" ).animate({top: "-2000px", opacity: "0"}, 1200);
+		});
+		$("#like-animation").css({opacity: "0"});
+		$("#logo").click(function(){
+			$("#like-animation").animate({opacity:"1"}, 300).animate({opacity:"0"},300);
+		});
+		// $(".photo").click(function(){
+		// 	$(".photo::after").css({opacity:1});
+		// });
+	});
 </script>
 </body>
 </html>

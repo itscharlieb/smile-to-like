@@ -8,7 +8,6 @@ $c-grey: #e9eaed;
 $c-dgrey:#999999;
 $c-blue: #3b5998;
 
-
 // Font   (px to em)
 @mixin font-size($size, $weight){
 	font-weight:$weight;
@@ -87,7 +86,11 @@ a{
 	border:none;
 	outline: none;
 }
-
+body{
+	overflow: visible;
+	height: 1000px;
+	width: 100%;
+}
 a:hover,
 a:active,
 a:visited{
@@ -109,38 +112,72 @@ header{
 			width: 140px;
 			height: auto;
 		}
+	#logout{
+		position: fixed;
+		background-color: transparent;
+		right:10px;
+		margin:14px 10px 0 0;
+		font-family: $font-reg;
+		@include font-size(12, normal);
+		color: #000000;
+		opacity: .4;
+		@include transition(.5s);
+		&:hover{
+			opacity: 1;
+		}
+	}
 }
 
 			.main_wrapper{
-				width: 70%;
-				margin: auto;
-				height: 100%;
-				min-height: 100%;
+				// background-color: rgba(155,155,155,0.1);
 				position: relative;
-
-				@media screen and (min-width: 1280px){
-					width: 65%;
-				}
-
+				margin: auto;
+				width: 70%;
+				height: 100%;
 				img{
 					position: fixed;
+					float: left;
 					top: 50%;
 					width: 40%;
-					transform: translateY(-50%);
+					left: 50%;
+					transform: translateY(-80%) translateX(-50%);
 					min-width: 400px;
-					margin-right: 5%;
-
-					@media screen and (min-width: 1280px){
-					width: 40%;
+					@media screen and (min-width: 1024px){
+					transform: translateY(-50%) translateX(35%);
+					left: 0;
 					}	
 				}
+				#like-animation{
+					@extend img;
+					font-family: inherit;
+					font-size: 7em;
+					background-color: transparent;
+					text-align: center;
+					z-index: 999;
+					height: 400px;
+					margin-top:125px;
+				}
 				.content{
-					float: right;
+					position: fixed;
+					right:50%;
 					width: 25%;
-					min-width: 280px;
+					transform: translateX(50%);
+					min-width: 320px;
 					display: inline-block;
-					margin-top: 18%;
+					bottom: 0;
+					height: 250px;
 
+					@media screen and (min-width: 1024px){
+					top:20%;
+					transform: translateX(-50%);
+					float: right;
+					right: 0;
+					min-width: 280px;
+						
+					}
+					@media screen and (min-width: 1280px){
+					min-width: 280px;
+					}	
 					#like_wrapper{
 						margin-bottom: 70px;
 						div{
@@ -160,10 +197,21 @@ header{
 						background-image:url(../img/sample2.png);
 						background-size: cover;
 						margin-right: 10px;
-					}
-					.user-photo{
+						margin-top:-2px;
 						display: inline-block;
 						border-radius: 50%;
+						border:solid white 2px;
+						@include transition(.5s);
+
+						&:hover{
+							border: solid $c-yellow 2px;
+						}
+					}
+					.user-name{
+						@include transition(.5s);
+						&:hover{
+							color:black;
+						}
 					}
 					.date{
 						display: inline-block;
@@ -190,17 +238,23 @@ header{
 	@include transition(1s);
 }
 
-
 //404
 .errorpage{
+	width: 600px;
+	margin: auto;
 	text-align: center;
+	top:50%;
+	transform:translateY(40%);
 	h1{
-	font-family: $font-reg;
-	@include font-size(222, normal);
-	letter-spacing: 5px;
-	border-bottom: 4px solid $c-yellow;
+		position: relative;
+		margin: auto;
+		max-width: 360px;
+		font-family: $font-reg;
+		@include font-size(222, normal);
+		letter-spacing: 5px;
+		border-bottom: 16px solid $c-yellow;
+		margin-bottom: 15px;
 	}
-
 	h3{
 		font-family: $font-reg;
 		@include font-size(56, normal);
