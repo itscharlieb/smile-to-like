@@ -26,7 +26,8 @@ function process_photo(data_uri){
 		contentType: 'application/json',
 		success: function(data) {
 			console.log(JSON.stringify(data));
-			if (data == "LIKE") {
+			console.log(data.action);
+			if (data.action == "LIKE") {
 				$("#like-animation").animate({opacity:"1"}, 300).animate({opacity:"0"},300);
 			};
 			// document.getElementById('my_test').innerHTML = JSON.stringify(data)
