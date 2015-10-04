@@ -31,7 +31,7 @@
 
             function process_photo(data_uri){
                 $.ajax({
-                    url: 'http://localhost:5000/get_test',
+                    url: "{{ url_for('get_test') }}",
                     contentType: 'application/json',
                     data: data_uri,
                     success: function (){
