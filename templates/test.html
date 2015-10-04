@@ -33,7 +33,7 @@
                     }),
                     contentType: 'application/json',
                     success: function(data) {
-                        document.getElementById('my_test').innerHTML = '<p> success </p>'
+                        document.getElementById('my_test').innerHTML = JSON.stringify(data)
                     }
                 });
             }

@@ -34,8 +34,8 @@ def test():
 @app.route('/get_test', methods=['POST'])
 def get_test():
     data = request.get_json(force=True)
-    print indicoio.fer(data['uri'])
-    return jsonify({'key': 'val'})
+    sentiment = indicoio.fer(data['uri'])
+    return jsonify(sentiment)
 
 def pageNotFound(e):
   """ Handle 404 errors """
