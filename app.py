@@ -24,17 +24,13 @@ api = InstagramAPI(access_token=access_token, client_secret=client_secret)
 def index():
   return render_template('index.html')
 
-# # @app.route('/redirectaccess', methods=['POST', 'GET'])
-# # def on_callback():
-# #   return render_template('index.html')
+@app.route('/test')
+def test():
+	return render_template('test.html')
 
-# @app.route('/test')
-# def test():
-# 	return render_template('test.html')
-
-# @app.route('/test2')
-# def test2():
-# 	return render_template('test2.html')
+@app.route('/test2')
+def test2():
+	return render_template('test2.html')
 
 
 
