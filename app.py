@@ -1,6 +1,8 @@
 #!/usr/bin/env python 
-from flask import Flask, render_template, request, url_for, redirect, make_response
+from flask import Flask, render_template, request, url_for, redirect, make_response, jsonify
 from instagram.client import InstagramAPI
+import requests
+import indicoio
 
 app = Flask(__name__)
 
@@ -19,6 +21,7 @@ api = InstagramAPI(access_token=access_token, client_secret=client_secret)
 # for media in media_feed:
 # 	print media.get_standard_resolution_url()
 	# photos.append('<img src="%s"/>' % media.get_standard_resolution_url())
+
 
 
 def get_instagram():
@@ -48,6 +51,7 @@ def get_instagram():
 	data['indexer'] = indexer
 	return data
 
+
 @app.route('/')
 def index():
 	print "hi"
@@ -58,11 +62,12 @@ def index():
 def test():
 	return render_template('test.html')
 
-@app.route('/get_test', methods=['GET'])
+@app.route('/get_test', methods=['POST'])
 def get_test():
-    print request.get_json(force=True)
+    data = request.get_json(force=True)
+    sentiment = indicoio.fer(data['uri'])
+    return jsonify(sentiment)
 
-@app.errorhandler(404)
 def pageNotFound(e):
   """ Handle 404 errors """
   return render_template('404.html'), 404
@@ -74,4 +79,5 @@ def serverNotFound(e):
 
 
 if __name__ == '__main__':
-  app.run(debug=True)
+    indicoio.config.api_key = '3e8805a619346600f1e5954226208e00'
+    app.run(debug=True)
