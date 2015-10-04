@@ -28,12 +28,10 @@ def evaluate_emotions(emotions):
     epsilon = .1
     negativity = sum(map(lambda emotion: emotions[emotion], negative_emotions))
     positivity = sum(map(lambda emotion: emotions[emotion], positive_emotions))
-    if positivity - negativity > epsilon:
+    if positivity - negativity > 0:
         return 'LIKE'
-    elif negativity - positivity > epsilon:
-        return 'DISLIKE'
     else:
-        return 'NORESPONSE'
+        return 'DISLIKE'
 
 
 emos = {
