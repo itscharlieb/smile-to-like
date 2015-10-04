@@ -1,26 +1,6 @@
-@import "susy";
-
-// Grid
-$susy: (
-	columns: 12,
-	container:100%,
-	gutters: 1/4,
-	global-box-sizing:border-box,
-	debug: (
-	    image: show,
-	    output: overlay,
-	    color: rgba(2,86,156,0.2),
-	    toggle: top right,
-	)
-);
-
-
-
 // Variables (Font)
-
 $font-reg: "soleil", sans-serif;
 $font-bold: "soleil", sans-serif;
-
 
 // Variables (Color)
 $c-yellow: #ffce14;
@@ -30,7 +10,6 @@ $c-blue: #3b5998;
 
 
 // Font   (px to em)
-
 @mixin font-size($size, $weight){
 	font-weight:$weight;
 	font-size: ($size / 16) * .9em;
@@ -51,18 +30,6 @@ h1{
 	font-family: $font-reg;
 	@include font-size(72, normal);
 }
-h2{
-
-}
-h3{
-
-}
-h4{
-}
-h5{
-}
-h3{
-}
 p,
 a{
 	font-family:$font-reg;
@@ -75,14 +42,11 @@ a{
 	}
 }
 
-
 .date,
 .description,
 .see-more{
 	@include font-size(13.2, normal);
 }
-
-
 
 // Mixin
 @mixin transition($duration) {
@@ -113,24 +77,15 @@ a{
 
 // debug
 @mixin debug{
-	// background-color: rgba(2,86,156,0.1);	
-	// @include susy-grid-background;
+	// background-color: rgba(2,86,156,0.1);
 }
-@mixin debug2{
-	border: 1px solid black;
-}
-
 
 // Main
-
 *{
 	margin: 0;
 	padding: 0;
 	border:none;
 	outline: none;
-}
-body{
-	// height: 2000px;
 }
 
 a:hover,
@@ -139,6 +94,7 @@ a:visited{
 	cursor: pointer;
 	text-decoration: none;
 }
+
 header{
 	@include debug;
 	position: fixed;
@@ -149,59 +105,41 @@ header{
 	z-index: 100;
 
 		img{
-			margin:10px 0 0 10px;
-			width: 130px;
+			margin:14px 0 0 10px;
+			width: 140px;
 			height: auto;
 		}
 }
 
-#fullpage{
-	.section{
-		.slide{
 			.main_wrapper{
 				width: 70%;
 				margin: auto;
 				height: 100%;
 				min-height: 100%;
 				position: relative;
-				@include debug;
-				@media screen and (max-width: 800px){
-					// width: 90%;
+
+				@media screen and (min-width: 1280px){
+					width: 65%;
 				}
 
-				.photo{
+				img{
 					position: fixed;
 					top: 50%;
-					transform: translateY(-50%);
 					width: 40%;
-					min-width: 480px;
+					transform: translateY(-50%);
+					min-width: 400px;
 					margin-right: 5%;
 
-					@include debug;
-					height: 100%;
-					@include flexbox(column);
-					@include flexbox-justify(center);
-					@include flexbox-align(center);
-
-					img{
-					@include flexbox-justify(center);
-					@include flexbox-align(center);
-						width: 100%;
-					}
-
+					@media screen and (min-width: 1280px){
+					width: 40%;
+					}	
 				}
 				.content{
 					float: right;
 					width: 25%;
 					min-width: 280px;
 					display: inline-block;
-					@include debug;
-					@media screen and (max-width:800px){
-						// position: relative;
-						// width: 100%;
-						// margin-top: 15px;
-						// @include transition(.5s);
-					}
+					margin-top: 18%;
 
 					#like_wrapper{
 						margin-bottom: 70px;
@@ -210,6 +148,7 @@ header{
 						width: 100%;
 						height: 15px;
 						margin-bottom: 8px;
+						min-width: 300px;
 						}
 						p{
 							@include font-size(13.2, normal);
@@ -223,18 +162,13 @@ header{
 						margin-right: 10px;
 					}
 					.user-photo{
+						display: inline-block;
 						border-radius: 50%;
 					}
-					.user-photo,
 					.date{
 						display: inline-block;
-					}
-					.date{
 						color:$c-dgrey;
 						margin-bottom: 14px;
-					}
-					.user-name{
-						
 					}
 					.description{
 						overflow: auto;
@@ -243,22 +177,38 @@ header{
 					.comment{
 						background-color: gray;
 						opacity: .1;
-						// max-height:400px;
 						height: 280px;
 						width: 100%;
 					}
 				}
 			}
-		}
-	}
-}
-
-
 
 
 // Jquery & Animation
-
 .slideup{
 	opacity: 0;
 	@include transition(1s);
+}
+
+
+//404
+.errorpage{
+	text-align: center;
+	h1{
+	font-family: $font-reg;
+	@include font-size(222, normal);
+	letter-spacing: 5px;
+	border-bottom: 4px solid $c-yellow;
+	}
+
+	h3{
+		font-family: $font-reg;
+		@include font-size(56, normal);
+		letter-spacing: 2px;
+		margin-bottom: 10px;
+	}
+	p{
+		font-family: $font-reg;
+		@include font-size(22, normal);
+	}
 }
