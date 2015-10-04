@@ -1,6 +1,5 @@
 // Variables (Font)
 $font-reg: "soleil", sans-serif;
-$font-bold: "soleil", sans-serif;
 
 // Variables (Color)
 $c-yellow: #ffce14;
@@ -11,23 +10,20 @@ $c-blue: #3b5998;
 // Font   (px to em)
 @mixin font-size($size, $weight){
 	font-weight:$weight;
+	font-style: normal;
 	font-size: ($size / 16) * .9em;
 	letter-spacing: default;
 	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing: grayscale;
 
 	@media screen and (min-width: 1280px){
 	font-size: ($size / 16) * 1em;
 	}
 }
-@mixin font-lnum{
-   -moz-font-feature-settings: "lnum";
-   -webkit-font-feature-settings: "lnum";
-   font-feature-settings: "lnum";
-}
 
 h1{
 	font-family: $font-reg;
-	@include font-size(72, normal);
+	@include font-size(72, 400);
 }
 p,
 a{
@@ -35,16 +31,15 @@ a{
 	line-height: 1.7em;
 
 	&.user-name{
-	font-family: $font-bold;
-	@include font-size(22.2, bold);
+	font-family: $font-reg;
+	@include font-size(22.2, 700);
 	color: $c-blue;
 	}
 }
 
 .date,
-.description,
-.see-more{
-	@include font-size(13.2, normal);
+.description{
+	@include font-size(13.2, 400);
 }
 
 // Mixin
@@ -68,15 +63,11 @@ a{
 @mixin flexbox-align($direction){
 	    align-content:$direction;
 }
+
 // Mixin (Effects)
 @mixin underline{
 	text-decoration: underline;
 	cursor: pointer;
-}
-
-// debug
-@mixin debug{
-	// background-color: rgba(2,86,156,0.1);
 }
 
 // Main
@@ -88,8 +79,8 @@ a{
 }
 body{
 	overflow: visible;
-	height: 1000px;
 	width: 100%;
+	height: 1000px;
 }
 a:hover,
 a:active,
@@ -99,12 +90,11 @@ a:visited{
 }
 
 header{
-	@include debug;
 	position: fixed;
-	width: 100%;
-	height:100px;
 	top: 0;
 	left: 0;
+	width: 100%;
+	height:100px;
 	z-index: 100;
 
 		img{
@@ -112,28 +102,29 @@ header{
 			width: 140px;
 			height: auto;
 		}
-	#logout{
+	button{
 		position: fixed;
-		background-color: transparent;
 		right:10px;
 		margin:14px 10px 0 0;
 		font-family: $font-reg;
-		@include font-size(12, normal);
+		@include font-size(12, 400);
 		color: #000000;
+		background-color: transparent;
 		opacity: .4;
 		@include transition(.5s);
 		&:hover{
+			cursor: pointer;
 			opacity: 1;
 		}
 	}
 }
 
 			.main_wrapper{
-				// background-color: rgba(155,155,155,0.1);
 				position: relative;
 				margin: auto;
 				width: 70%;
 				height: 100%;
+
 				img{
 					position: fixed;
 					float: left;
@@ -149,60 +140,60 @@ header{
 				}
 				#like-animation{
 					@extend img;
+					height: 400px;
+					margin-top:125px;
 					font-family: inherit;
 					font-size: 7em;
 					background-color: transparent;
 					text-align: center;
 					z-index: 999;
-					height: 400px;
-					margin-top:125px;
 				}
 				.content{
+					display: inline-block;
 					position: fixed;
+					bottom: 0;
 					right:50%;
 					width: 25%;
-					transform: translateX(50%);
 					min-width: 320px;
-					display: inline-block;
-					bottom: 0;
 					height: 250px;
-
+					transform: translateX(50%);
 					@media screen and (min-width: 1024px){
-					top:20%;
-					transform: translateX(-50%);
 					float: right;
+					top:20%;
 					right: 0;
+					transform: translateX(-50%);
 					min-width: 280px;
-						
 					}
 					@media screen and (min-width: 1280px){
 					min-width: 280px;
 					}	
+
 					#like_wrapper{
 						margin-bottom: 70px;
+
 						div{
-						background-color: $c-yellow;
 						width: 100%;
+						min-width: 300px;
 						height: 15px;
 						margin-bottom: 8px;
-						min-width: 300px;
+						background-color: $c-yellow;
 						}
+
 						p{
-							@include font-size(13.2, normal);
+							@include font-size(13.2, 400);
 						}
 					}
 					.user-photo{
+						display: inline-block;
 						width: 70px;
 						height:70px;
-						background-image:url(../img/sample2.png);
-						background-size: cover;
-						margin-right: 10px;
 						margin-top:-2px;
-						display: inline-block;
+						margin-right: 10px;
 						border-radius: 50%;
 						border:solid white 2px;
+						background-image:url(../img/sample2.png);
+						background-size: cover;
 						@include transition(.5s);
-
 						&:hover{
 							border: solid $c-yellow 2px;
 						}
@@ -215,54 +206,73 @@ header{
 					}
 					.date{
 						display: inline-block;
-						color:$c-dgrey;
 						margin-bottom: 14px;
+						color:$c-dgrey;
 					}
 					.description{
-						overflow: auto;
+						max-height: 600px;
 						margin-bottom: 25px;
-					}
-					.comment{
-						background-color: gray;
-						opacity: .1;
-						height: 280px;
-						width: 100%;
+						overflow: auto;
 					}
 				}
 			}
 
 
-// Jquery & Animation
-.slideup{
-	opacity: 0;
-	@include transition(1s);
-}
-
-//404
-.errorpage{
+// Log in Button
+.login{
+	top:50%;
+	transform:translateY(40%);
 	width: 600px;
 	margin: auto;
 	text-align: center;
+
+	iframe{
+		width:  560px;
+		height: 315px;
+		margin-bottom: 50px;
+	}
+	#login-button{
+		background-color:white;
+		color:black;
+		padding: 15px 20px;
+		font-family: $font-reg;
+		border: solid $c-yellow 2px;
+		@include font-size(18, 400);
+		@include transition(.5s);
+		&:hover{
+			cursor: pointer;
+			color:black;
+			border: solid black 2px;
+		}
+	}
+
+}
+
+
+//404
+.errorpage{
 	top:50%;
 	transform:translateY(40%);
+	width: 600px;
+	margin: auto;
+	text-align: center;
 	h1{
 		position: relative;
-		margin: auto;
 		max-width: 360px;
-		font-family: $font-reg;
-		@include font-size(222, normal);
-		letter-spacing: 5px;
+		margin: auto auto 15px auto;
 		border-bottom: 16px solid $c-yellow;
-		margin-bottom: 15px;
+		font-family: $font-reg;
+		@include font-size(222, 400);
+		letter-spacing: 5px;
 	}
 	h3{
-		font-family: $font-reg;
-		@include font-size(56, normal);
-		letter-spacing: 2px;
 		margin-bottom: 10px;
+		font-family: $font-reg;
+		@include font-size(56, 400);
+		letter-spacing: 2px;
 	}
 	p{
 		font-family: $font-reg;
-		@include font-size(22, normal);
+		@include font-size(22, 400);
 	}
 }
