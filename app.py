@@ -36,7 +36,6 @@ def get_instagram():
 	indexer = []
 	mediaIds = []
 	for media in media_feed:
-		mediaIds.append(media.id+ "")
 		descriptions.append(media.caption.text)
 		photos.append(media.get_standard_resolution_url())
 		usernames.append(media.user.username)
@@ -69,8 +68,6 @@ def get_test():
     data = request.get_json(force=True)
     sentiment = indicoio.fer(data['uri'])
     human_response = evaluate_emotions(sentiment)
-    # if human_response == 'LIKE':
-
     return jsonify({
     	'action': human_response })
 

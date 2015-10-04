@@ -21,9 +21,15 @@
 	<header>
 		<img src="../static/img/logo.svg"/>
 	</header>
+	<script type="text/javascript">
+		function loop_through (photos, prof_photos, usernames, descriptions) {
+			
+		}
+	</script>
 	<div class="main_wrapper">
 		<div id="my_camera" style="display: none;"></div>
 		<div id="like-animation">&#128526</div>
+
 			<img src="{{ photos[0] }}"/>
 			<div class="content">
 			<a class="user-photo" href="{{ prof_photos[0] }}"></a>
@@ -41,28 +47,13 @@
 			(function call_post () {
 				setTimeout(function () {
 					setTimeout(function () {
-						var id = ({{ mediaIds[0] }}).toString();
-						take_snapshot(id);
-					}, 3000);
-					// $.ajax({
-					// 	url: "{{ url_for('get_test') }}",
-					// 	contentType: 'application/json',
-					// 	success: function success (sentiment) {
-					// 		console.log("sentiment: "+sentiment);
-					// 		// if (sentiment == 'LIKE') {
-					// 		// 	console.log("sentiment: "+sentiment);
-					// 		// 	// $("#like-animation").animate({opacity:"1"}, 300).animate({opacity:"0"},300);
-					// 		// } else {
-
-					// 		// }
-					// 	}
-					// });
-				}, 10000);
+						take_snapshot();
+					}, 2500);
+				}, 7000);
 			})();
 		</script>
 	</div>
 
-	<script type="text/javascript" src="../static/js/main.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){
 		$( window ).scroll(function() {
