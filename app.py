@@ -66,7 +66,7 @@ def test():
 @app.route('/get_test', methods=['POST'])
 def get_test():
     data = request.get_json(force=True)
-    sentiment = indicoio.fer(data['uri'])
+    sentiment = indicoio.fer(data['uri'], detect=True)
     human_response = evaluate_emotions(sentiment)
     return jsonify({
     	'action': human_response })
