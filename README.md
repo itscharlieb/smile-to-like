@@ -7,6 +7,9 @@ by using a webcam and emotion recognition.
 The application is built with Indico.io and Instagram APIs,
 along with Python, Flask, Webcam.js, Javascript, HTML and CSS.
 
+Vimeo Link
 https://vimeo.com/141321967
 
+DevPost link
+http://devpost.com/software/smile-to-like
 
